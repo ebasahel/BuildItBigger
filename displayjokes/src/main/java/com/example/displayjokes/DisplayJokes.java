@@ -10,24 +10,21 @@ import java.util.Random;
 
 public class DisplayJokes extends AppCompatActivity {
 
-  private List<String> jokes;
+  private String jokes;
   public static final String JOKES_EXTRA ="Jokes extra";
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_display_jokes);
-    jokes= new ArrayList<>();
     if (getIntent().getExtras()!= null)
-      jokes = (getIntent().getStringArrayListExtra(JOKES_EXTRA));
+      jokes = getIntent().getExtras().getString(JOKES_EXTRA);
 
     displayJokes (jokes);
   }
 
-  private void displayJokes (List<String> jokeList)
+  private void displayJokes (String result)
   {
     finish();
-    Random rand = new Random();
-    int n       = rand.nextInt(2) + 1;
-    Toast.makeText(this, jokeList.get(n), Toast.LENGTH_SHORT).show();
+    Toast.makeText(this, result, Toast.LENGTH_LONG).show();
   }
 }

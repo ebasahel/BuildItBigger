@@ -1,7 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,15 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
-import com.example.createjokes.JokeClass;
-import com.example.displayjokes.DisplayJokes;
-
-import java.util.ArrayList;
-
-import static com.example.displayjokes.DisplayJokes.JOKES_EXTRA;
-
-
 public class MainActivity extends AppCompatActivity {
 
   @Override
@@ -44,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
     fragTransaction.add(R.id.fragment, Frag);
     fragTransaction.commit();
     //endregion
-
-    new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Eiman"));
   }
 
 
@@ -71,9 +59,8 @@ public class MainActivity extends AppCompatActivity {
     return super.onOptionsItemSelected(item);
   }
 
+  //
   public void tellJoke(View view) {
-    Intent intent = new Intent(this, DisplayJokes.class);
-    intent.putStringArrayListExtra(JOKES_EXTRA, (ArrayList<String>) JokeClass.getJokes());
-    startActivity(intent);
+    new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Eiman"));
   }
 }
