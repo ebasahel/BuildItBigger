@@ -2,29 +2,35 @@ package com.example.displayjokes;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
 
-public class DisplayJokes extends AppCompatActivity {
+public class DisplayJokes extends AppCompatActivity{
 
-  private String jokes;
-  public static final String JOKES_EXTRA ="Jokes extra";
+  public interface onJokeReceived {
+    void setJokes(String result);
+  }
+
+  private String         jokes;
+  private onJokeReceived jokeListener;
+  public static final String JOKES_EXTRA = "Jokes extra";
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_display_jokes);
-    if (getIntent().getExtras()!= null)
+
+    if (getIntent().getExtras() != null)
       jokes = getIntent().getExtras().getString(JOKES_EXTRA);
 
-    displayJokes (jokes);
+    jokeListener = (onJokeReceived) this;
+    displayJokes(jokes);
+
   }
 
-  private void displayJokes (String result)
-  {
+
+  private void displayJokes(String result) {
+//    Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+    jokeListener.setJokes(result);
     finish();
-    Toast.makeText(this, result, Toast.LENGTH_LONG).show();
   }
+
 }
