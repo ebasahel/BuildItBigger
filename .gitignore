@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gradle/
+.idea/caches/
+.idea/workspace.xml
+backend/build/tmp/
+createJokes/build/
+local.properties

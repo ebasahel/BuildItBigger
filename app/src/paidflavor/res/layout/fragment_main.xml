@@ -21,13 +21,4 @@
         android:onClick="tellJoke"
         android:text="@string/button_text" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txt_display_jokes"
-        tools:text="Jokes Display here"
-        android:textSize="14sp"
-        android:layout_centerInParent="true"
-        />
-
 </RelativeLayout>

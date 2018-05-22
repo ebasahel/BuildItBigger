@@ -7,24 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.displayjokes.DisplayJokes;
 import com.udacity.gradle.builditbigger.R;
 
-public class MainActivityFragment extends Fragment implements DisplayJokes.onJokeReceived {
+public class MainActivityFragment extends Fragment {
 
   public MainActivityFragment() {
   }
-  private TextView txtDisplayJokes;
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
     View root =inflater.inflate(R.layout.fragment_main, container, false);
-    txtDisplayJokes = root.findViewById(R.id.txt_display_jokes);
     return root;
   }
 
-  @Override
-  public void setJokes(String result) {
-    txtDisplayJokes.setText(result);
-  }
 }
